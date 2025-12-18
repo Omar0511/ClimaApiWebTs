@@ -20,4 +20,8 @@
   - Para ello deberá entregar una respuesta tipo _JSON_.
   - Al ser _JavaScript_ puedes utilizar _Fetch API, axios, SWR_, para obtener los datos y mostrarlos en pantalla.
   - Algunas _API'S_ requieren un _KEY_, y otras están protegidas por _CORS_.
-  
+- Google Fonts
+  - Tipografía:
+    - _Outfit_
+  - Se configura en el **index.html**
+
