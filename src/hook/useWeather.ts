@@ -1,7 +1,8 @@
 import axios from "axios";
 // import { SearchType, Weather } from "../types";
+// import { z } from "zod";
+import { object, string, number, Output, parse } from 'valibot';
 import { SearchType } from "../types";
-import { z } from "zod";
 
 // unknown: desconocido, representa un valor cuyo tipo no conoces en el tiempo de compilación (TYPE GUARDS)
 // function isWeatherResponse(weather : unknown) : weather is Weather {
@@ -16,16 +17,28 @@ import { z } from "zod";
 // }
 
 // ZOD
-const Weather = z.object({
-  name: z.string(),
-  main: z.object({
-    temp: z.number(),
-    temp_max: z.number(),
-    temp_min: z.number(),
+// const Weather = z.object({
+//   name: z.string(),
+//   main: z.object({
+//     temp: z.number(),
+//     temp_max: z.number(),
+//     temp_min: z.number(),
+//   })
+// });
+
+// type Weather = z.infer<typeof Weather>
+
+// Valibot
+const WeatherSchema = object({
+  name: string(),
+  main: object({
+    temp: number(),
+    temp_max: number(),
+    temp_min: number(),
   })
 });
 
-type Weather = z.infer<typeof Weather>
+type Weather = Output<typeof WeatherSchema>;
 
 export default function useWeather() {
   const fetchWeather = async (search: SearchType) => {
@@ -63,13 +76,22 @@ export default function useWeather() {
       // }
 
       // ZOD
-      const { data: weatherResult } = await axios(weatherUrl);
-      const result = Weather.safeParse(weatherResult);
+      // const { data: weatherResult } = await axios(weatherUrl);
+      // const result = Weather.safeParse(weatherResult);
       // console.log(result);
 
-      if (result.success) {
-        console.log(result.data.name);
-        console.log(result.data.main.temp);
+      // if (result.success) {
+      //   console.log(result.data.name);
+      //   console.log(result.data.main.temp);
+      // }
+
+      // Valibot
+      const { data: weatherResult } = await axios(weatherUrl);
+      const result = parse(WeatherSchema, weatherResult);
+      // console.log(result);
+
+      if (result) {
+        console.log(result.name);
       }
 
     } catch (error) {

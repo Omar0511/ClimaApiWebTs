@@ -26,6 +26,12 @@
   - Se configura en el **index.html**
 - Axios - Consumo de API
   - **_npm i axios_**
+    - ## Opciones de uso en las _API'S_
+      - _Type Guards_
+      - _ZOD_
+        - **_npm i zod_**
+      - _Volibot_
+        - **_npm i valibot_**
 - Variables de entorno
   - _https://vite.dev/guide/env-and-mode_
   - Se utilizó: 
@@ -36,9 +42,5 @@
     - VITE_API_KEY=VALOR A ASIGNAR
   - Y al llamarla o usarla, lo hacemos así, ejemplo:
     - **const appId = import.meta.env.VITE_API_KEY;**
-  - Opciones de uso en las _API'S_
-    - _Type Guards_
-    - _ZOD_
-      - **_npm i zod_**
-    - _Voli_
+    
 
