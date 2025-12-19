@@ -45,5 +45,4 @@
 - SPINNERS 
   - Para mostrar algo cuando esta cargando
   - _https://tobiasahlin.com/spinkit/_
-    
-
+- 
